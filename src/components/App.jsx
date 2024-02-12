@@ -1,5 +1,4 @@
 import { Component } from "react"
-import styles from "./Feedback/Feedback.module.css"
 import { Statistics } from "./Feedback/Statistics"
 import { FeedbackOptions } from "./Feedback/FeedbackOptions"
 import { Section } from "./helpers/Section"
@@ -42,13 +41,11 @@ export class App extends Component {
         }}
       >
         <Section title='Please leave feedback' children={
-          <div className={styles.button_wrapper}>
-              {Object.keys(this.state).map((key) => (
-                  <FeedbackOptions key={key} options={key} onLeaveFeedback={this.handlerAddRate} />))}
-          </div>} />
-          <Section title='Feedback statistics' children={
-            <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}/>
-          } />
+          <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.handlerAddRate} />
+        } />
+        <Section title='Feedback statistics' children={
+          <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}/>
+        } />
       </div>
     );
   }
