@@ -1,0 +1,23 @@
+.statistics_wrapper p {
+  font-size: 14px;
+}
+
+.scale {
+  margin-top: 14px;
+  position: relative;
+  width: 365px;
+  height: 20px;
+  background: linear-gradient(to right, #d24a38, #e6be00, #45a049);
+}
+
+.arrow {
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid black;
+  transform: translateX(-50%);
+}

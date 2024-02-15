@@ -1,13 +1,14 @@
 import { Component } from "react"
-import { Statistics } from "./Feedback/Statistics"
-import { FeedbackOptions } from "./Feedback/FeedbackOptions"
-import { Section } from "./helpers/Section"
+import { Statistics } from "./Statistics"
+import { FeedbackOptions } from "./FeedbackOptions"
+import { Section } from "./Section"
+import { Notification } from "./Notification"
 
 export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
-    bad: 0
+    bad: 0,
   }
 
   countTotalFeedback() {
@@ -43,9 +44,14 @@ export class App extends Component {
         <Section title='Please leave feedback' children={
           <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.handlerAddRate} />
         } />
-        <Section title='Feedback statistics' children={
-          <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}/>
-        } />
+        {this.countTotalFeedback() > 0 ? <Section title='Feedback statistics' children={
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}/>} /> : <Notification message='There is no feedback'/>}
+        
       </div>
     );
   }

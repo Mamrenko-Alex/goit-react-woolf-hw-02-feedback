@@ -1,4 +1,4 @@
-import styles from '../Feedback/Feedback.module.css'
+import styles from './FeedbackOptions.module.css'
 
 export const Section = ({ title, children }) => {
     return (
